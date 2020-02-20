@@ -1,0 +1,1146 @@
+﻿WEBVTT
+
+1
+00:00:00.130 --> 00:00:02.630
+<v ->In this lecture I will give you a demo</v>
+
+2
+00:00:02.630 --> 00:00:06.763
+of how the JFrog integration with Jenkins works.
+
+3
+00:00:09.850 --> 00:00:13.480
+First you need to have JFrog Artifactory,
+
+4
+00:00:13.480 --> 00:00:16.320
+you can download their open source version
+
+5
+00:00:16.320 --> 00:00:17.700
+from their website.
+
+6
+00:00:17.700 --> 00:00:20.429
+So these are the open source solutions,
+
+7
+00:00:20.429 --> 00:00:22.240
+you can just click on Downloads.
+
+8
+00:00:22.240 --> 00:00:25.500
+And then you can download the open source version.
+
+9
+00:00:25.500 --> 00:00:28.050
+Well it's easier and what a lot of companies use
+
+10
+00:00:28.050 --> 00:00:30.470
+is the managed version.
+
+11
+00:00:30.470 --> 00:00:34.153
+The cloud version that JFrog sets up for you,
+
+12
+00:00:35.800 --> 00:00:37.480
+you can start a free trial and then you can
+
+13
+00:00:37.480 --> 00:00:40.690
+decide later on whether you use it or not.
+
+14
+00:00:40.690 --> 00:00:43.870
+So I'm going to us the SaaS version,
+
+15
+00:00:43.870 --> 00:00:46.470
+I would use the SaaS version on Amazon Web Services.
+
+16
+00:00:47.520 --> 00:00:48.690
+You have to fill this out,
+
+17
+00:00:48.690 --> 00:00:52.060
+you get your own JFrog io sub domain.
+
+18
+00:00:52.060 --> 00:00:55.720
+And then once you fill this out, you need to activate it.
+
+19
+00:00:55.720 --> 00:00:58.670
+And after a couple of minutes you should be able to use it.
+
+20
+00:01:01.280 --> 00:01:05.000
+Then you need of course the plugin,
+
+21
+00:01:05.000 --> 00:01:06.483
+the Artifactory plugin.
+
+22
+00:01:09.910 --> 00:01:11.610
+So go to available plugins
+
+23
+00:01:11.610 --> 00:01:13.900
+and you just look for Artifactory.
+
+24
+00:01:13.900 --> 00:01:17.203
+And you're going to install this Artifactory plugin.
+
+25
+00:01:19.400 --> 00:01:22.340
+It's going to install dependencies, the plugin,
+
+26
+00:01:22.340 --> 00:01:24.290
+and then it's going to restart Jenkins.
+
+27
+00:01:25.340 --> 00:01:27.610
+While Jenkins is updating I'm going
+
+28
+00:01:27.610 --> 00:01:31.610
+to go to my JFrog account.
+
+29
+00:01:31.610 --> 00:01:34.150
+So I'm going to log in with my credentials
+
+30
+00:01:36.330 --> 00:01:39.243
+and then I'm going to click to go to my server.
+
+31
+00:01:40.900 --> 00:01:45.083
+And then I will be redirected to my own JFrog server.
+
+32
+00:01:46.480 --> 00:01:48.250
+And then this username and password,
+
+33
+00:01:48.250 --> 00:01:49.560
+if you're using this version,
+
+34
+00:01:49.560 --> 00:01:52.570
+is actually admin and then a random password
+
+35
+00:01:52.570 --> 00:01:54.190
+that has been emailed to you.
+
+36
+00:01:54.190 --> 00:01:56.350
+So if you cannot log in make sure
+
+37
+00:01:56.350 --> 00:01:58.363
+you are using the correct credentials.
+
+38
+00:02:00.610 --> 00:02:02.250
+And then you get a welcome screen.
+
+39
+00:02:02.250 --> 00:02:04.173
+And you can see all the integrations.
+
+40
+00:02:05.760 --> 00:02:07.190
+So now we see the screen,
+
+41
+00:02:07.190 --> 00:02:09.750
+Artifactory is happily serving zero artifacts,
+
+42
+00:02:09.750 --> 00:02:11.653
+it's just an empty Artifactory system.
+
+43
+00:02:12.490 --> 00:02:14.463
+So what you're gonna do is
+
+44
+00:02:14.463 --> 00:02:16.450
+you wanna do a Quick Setup,
+
+45
+00:02:16.450 --> 00:02:18.673
+you want to create a Gradle repository.
+
+46
+00:02:19.600 --> 00:02:20.623
+Press Create.
+
+47
+00:02:22.550 --> 00:02:24.650
+And then it's going to create a Gradle dev local,
+
+48
+00:02:24.650 --> 00:02:26.970
+Gradle release local, a jcenter,
+
+49
+00:02:26.970 --> 00:02:29.340
+a Gradle dev, and Gradle release.
+
+50
+00:02:29.340 --> 00:02:32.180
+So those repositories have been created now.
+
+51
+00:02:32.180 --> 00:02:34.050
+And how the system works is
+
+52
+00:02:35.290 --> 00:02:39.210
+we can publish some jars or some artifacts
+
+53
+00:02:39.210 --> 00:02:41.480
+in one of these repos.
+
+54
+00:02:41.480 --> 00:02:43.790
+And then if you want you can also use
+
+55
+00:02:43.790 --> 00:02:45.910
+these repos as dependencies.
+
+56
+00:02:45.910 --> 00:02:49.000
+So the jars, the libraries that you were using
+
+57
+00:02:49.000 --> 00:02:52.400
+can also be imported and cached in this system.
+
+58
+00:02:52.400 --> 00:02:55.990
+And then your own libraries can then be saved here as well.
+
+59
+00:02:55.990 --> 00:02:57.669
+So then when you use depenencies,
+
+60
+00:02:57.669 --> 00:02:59.270
+some of the depenencies can be yours,
+
+61
+00:02:59.270 --> 00:03:02.290
+some of the depenencies can be from someone else,
+
+62
+00:03:02.290 --> 00:03:03.610
+public depenencies.
+
+63
+00:03:03.610 --> 00:03:06.430
+So it bundles private and public depenencies
+
+64
+00:03:06.430 --> 00:03:10.423
+for any programming language that you want.
+
+65
+00:03:11.340 --> 00:03:12.950
+The principle is the same.
+
+66
+00:03:12.950 --> 00:03:16.270
+I'm going to show it to you with Gradle,
+
+67
+00:03:16.270 --> 00:03:18.483
+but you could do the same thing Maven,
+
+68
+00:03:20.046 --> 00:03:23.210
+with NPM, or even with Docker,
+
+69
+00:03:23.210 --> 00:03:25.010
+if you don't like to use Docker Hub.
+
+70
+00:03:26.410 --> 00:03:28.940
+Or a generic one, so this one here
+
+71
+00:03:28.940 --> 00:03:32.060
+is a generic one to publish some artifacts
+
+72
+00:03:32.060 --> 00:03:35.550
+and get some artifacts, that's all possible.
+
+73
+00:03:35.550 --> 00:03:37.600
+What we need is we need now a user
+
+74
+00:03:37.600 --> 00:03:40.683
+and we need the permissions for that user.
+
+75
+00:03:41.880 --> 00:03:43.650
+Best practice is to create group,
+
+76
+00:03:43.650 --> 00:03:46.653
+so let me just start with creating a group.
+
+77
+00:03:48.110 --> 00:03:49.783
+I'm going to create a new group.
+
+78
+00:03:50.850 --> 00:03:52.563
+Let's create a deploy group.
+
+79
+00:03:56.160 --> 00:03:58.313
+I'm gonna create a new user.
+
+80
+00:04:00.680 --> 00:04:02.233
+I'm gonna create a deploy user.
+
+81
+00:04:07.432 --> 00:04:10.182
+(mouse clicking)
+
+82
+00:04:15.070 --> 00:04:17.140
+I'm going to put this deploy user
+
+83
+00:04:18.120 --> 00:04:19.483
+in the deploy group.
+
+84
+00:04:20.777 --> 00:04:24.943
+I'm gonna give this user a password and an email address.
+
+85
+00:04:29.770 --> 00:04:32.010
+This user doesn't have admin privileges,
+
+86
+00:04:32.010 --> 00:04:33.040
+which means that we're gonna have
+
+87
+00:04:33.040 --> 00:04:35.283
+to add permission ourselves.
+
+88
+00:04:36.520 --> 00:04:39.523
+So here we have the deploy user in the deploy group.
+
+89
+00:04:40.430 --> 00:04:42.023
+Let's now add permissions.
+
+90
+00:04:43.870 --> 00:04:45.820
+I'm gonna click New again.
+
+91
+00:04:45.820 --> 00:04:47.673
+I'm gonna add deploy permissions.
+
+92
+00:04:48.880 --> 00:04:50.560
+I'm gonna select all my repositories
+
+93
+00:04:50.560 --> 00:04:53.573
+that my deploy user can deploy too.
+
+94
+00:04:54.538 --> 00:04:56.980
+So the ones I create my deploy user
+
+95
+00:04:56.980 --> 00:04:58.773
+is going to be able to deploy too.
+
+96
+00:05:00.720 --> 00:05:02.403
+I'm gonna save the deploy.
+
+97
+00:05:04.250 --> 00:05:08.320
+Deploy group has this deploy permission
+
+98
+00:05:08.320 --> 00:05:12.480
+and this deploy group can deploy artifacts,
+
+99
+00:05:12.480 --> 00:05:13.700
+so it can deploy something,
+
+100
+00:05:13.700 --> 00:05:16.050
+but it cannot delete, it can't manage anything.
+
+101
+00:05:17.220 --> 00:05:18.320
+We'll save and finish.
+
+102
+00:05:19.400 --> 00:05:22.163
+And that should be enough to get going.
+
+103
+00:05:23.070 --> 00:05:28.063
+So Jenkins installed the Artifactory plugin.
+
+104
+00:05:29.810 --> 00:05:32.360
+And then we're gonna have to manage Jenkins.
+
+105
+00:05:32.360 --> 00:05:34.210
+Gonna have to go to Configure System,
+
+106
+00:05:35.485 --> 00:05:37.800
+then we have to go and configure
+
+107
+00:05:37.800 --> 00:05:40.363
+the JFrog Artifactory plugin.
+
+108
+00:05:44.870 --> 00:05:46.790
+Enable to make it secure,
+
+109
+00:05:46.790 --> 00:05:48.897
+then it is best to use the credentials plugin.
+
+110
+00:05:48.897 --> 00:05:51.493
+And then we're going to store the credentials,
+
+111
+00:05:53.030 --> 00:05:55.590
+just as we store all the other credentials.
+
+112
+00:05:55.590 --> 00:05:57.170
+So it's your username and password,
+
+113
+00:05:57.170 --> 00:05:59.400
+the username is deploy.
+
+114
+00:05:59.400 --> 00:06:01.090
+What I'm going to do now is,
+
+115
+00:06:01.090 --> 00:06:04.400
+I'm going to log in with my deploy user
+
+116
+00:06:04.400 --> 00:06:05.923
+and my deploy password.
+
+117
+00:06:09.940 --> 00:06:13.083
+And here on my user profile,
+
+118
+00:06:14.310 --> 00:06:16.320
+I'm actually going to unlock this,
+
+119
+00:06:16.320 --> 00:06:19.180
+I'm going to create an API key.
+
+120
+00:06:19.180 --> 00:06:21.290
+So here you can click to regenerate one
+
+121
+00:06:21.290 --> 00:06:22.640
+because I already have one.
+
+122
+00:06:24.100 --> 00:06:26.610
+And then you can copy the key to the clipboard
+
+123
+00:06:27.570 --> 00:06:29.810
+rather than using your username and password,
+
+124
+00:06:29.810 --> 00:06:34.163
+you can use an API key.
+
+125
+00:06:36.030 --> 00:06:38.440
+And that API key you can use
+
+126
+00:06:38.440 --> 00:06:41.170
+as a password for your deploy user.
+
+127
+00:06:41.170 --> 00:06:43.933
+So this is for JFrog Artifactory.
+
+128
+00:06:47.550 --> 00:06:51.797
+JFrog, we'll just make it the Artifactory.
+
+129
+00:06:53.632 --> 00:06:54.465
+Gonna add this.
+
+130
+00:06:55.936 --> 00:06:57.173
+The server ID,
+
+131
+00:06:58.438 --> 00:07:02.688
+(mouse clicking and keys clacking)
+
+132
+00:07:06.780 --> 00:07:07.613
+And the URL.
+
+133
+00:07:09.291 --> 00:07:12.041
+(mouse clicking)
+
+134
+00:07:14.770 --> 00:07:16.883
+Gonna select the correct credentials.
+
+135
+00:07:18.370 --> 00:07:19.943
+And let's test the connection.
+
+136
+00:07:24.710 --> 00:07:25.970
+Okay, so now it works.
+
+137
+00:07:25.970 --> 00:07:28.893
+I just had to add this slash NewTechAcademy.
+
+138
+00:07:30.950 --> 00:07:33.453
+Found Artifactory 5.3.0.
+
+139
+00:07:34.670 --> 00:07:35.970
+We are going to save this.
+
+140
+00:07:37.750 --> 00:07:40.420
+And the first example I'm going to show you,
+
+141
+00:07:40.420 --> 00:07:42.260
+it's gonna be without Docker
+
+142
+00:07:42.260 --> 00:07:43.770
+because the Artifactory plugin
+
+143
+00:07:43.770 --> 00:07:46.200
+is going to use its own Java
+
+144
+00:07:46.200 --> 00:07:50.100
+and it's own Gradle to build this project.
+
+145
+00:07:50.100 --> 00:07:51.610
+If you're only going to use Docker,
+
+146
+00:07:51.610 --> 00:07:53.290
+like I explained in previous lectures,
+
+147
+00:07:53.290 --> 00:07:56.240
+I will show you at the end of this demo
+
+148
+00:07:56.240 --> 00:07:57.990
+how we can still manage to do that.
+
+149
+00:07:59.040 --> 00:08:03.400
+So do that then I have to go to Manage Jenkins,
+
+150
+00:08:03.400 --> 00:08:04.853
+Global Tool Configuration.
+
+151
+00:08:06.210 --> 00:08:07.943
+Going to have to install Gradle,
+
+152
+00:08:09.280 --> 00:08:14.280
+so here I'll just say Gradle, install automatically.
+
+153
+00:08:14.760 --> 00:08:15.793
+Latest version.
+
+154
+00:08:17.421 --> 00:08:18.571
+I'm going to save this.
+
+155
+00:08:20.970 --> 00:08:23.310
+Let's create a new item.
+
+156
+00:08:23.310 --> 00:08:25.670
+It's going to be Pipeline and it's going to be
+
+157
+00:08:25.670 --> 00:08:30.143
+my Gradle publisher test.
+
+158
+00:08:32.260 --> 00:08:33.253
+Press OK.
+
+159
+00:08:35.200 --> 00:08:37.143
+It's gonna be Pipeline from SCM.
+
+160
+00:08:38.687 --> 00:08:40.530
+I'm gonna get it from Git
+
+161
+00:08:40.530 --> 00:08:43.630
+and at my Jenkins course I have a JFrog integration.
+
+162
+00:08:43.630 --> 00:08:45.450
+And here I have a Jenkins file,
+
+163
+00:08:45.450 --> 00:08:46.750
+I'm going to use this one.
+
+164
+00:08:49.400 --> 00:08:52.913
+And the path is gonna be JFrog integration Jenkins file.
+
+165
+00:08:54.800 --> 00:08:55.970
+And this Jenkins file
+
+166
+00:09:00.010 --> 00:09:02.220
+is going to refine a server,
+
+167
+00:09:02.220 --> 00:09:06.800
+our Artifactory server, NewTechAcademyJfrog.io,
+
+168
+00:09:06.800 --> 00:09:09.943
+which I refined in the system settings in Jenkins.
+
+169
+00:09:11.056 --> 00:09:13.683
+It's going create a new Gradle build.
+
+170
+00:09:13.683 --> 00:09:16.183
+We're also going to publish the build information.
+
+171
+00:09:17.810 --> 00:09:19.660
+I'm going to build this GSGradle.git,
+
+172
+00:09:20.880 --> 00:09:22.480
+so let me open one that as well.
+
+173
+00:09:23.630 --> 00:09:25.660
+First I'm going to do some configuration.
+
+174
+00:09:25.660 --> 00:09:28.963
+I'm going to say the tool that I'm gonna use is Gradle,
+
+175
+00:09:28.963 --> 00:09:31.950
+so that's the tool name from the Jenkins configuration.
+
+176
+00:09:31.950 --> 00:09:33.610
+You can actually skip this if you want
+
+177
+00:09:33.610 --> 00:09:36.090
+to use the Gradle wrapper.
+
+178
+00:09:36.090 --> 00:09:39.010
+So I'm just using this tool from Jenkins,
+
+179
+00:09:39.010 --> 00:09:41.460
+but you can still use the wrapper if you want to use.
+
+180
+00:09:41.460 --> 00:09:43.620
+The wrapper is also the one that's committed
+
+181
+00:09:43.620 --> 00:09:45.500
+to the repository.
+
+182
+00:09:45.500 --> 00:09:49.885
+And then you should not need this Gradle tool installed.
+
+183
+00:09:49.885 --> 00:09:52.750
+It really depends what your preference is.
+
+184
+00:09:52.750 --> 00:09:54.430
+Configure my deploy repo,
+
+185
+00:09:54.430 --> 00:09:57.000
+so the Gradle dev local will be the repo
+
+186
+00:09:57.000 --> 00:09:58.870
+where I'm going to publish my artifacts.
+
+187
+00:09:58.870 --> 00:10:01.410
+And the resolver is going to be the Gradle dev,
+
+188
+00:10:01.410 --> 00:10:04.163
+where I will be getting my depenencies from.
+
+189
+00:10:05.950 --> 00:10:09.650
+This is some build information.
+
+190
+00:10:09.650 --> 00:10:13.600
+I'm going to say buildinfo.env.capture
+
+191
+00:10:13.600 --> 00:10:17.249
+and I'm going to include everything.
+
+192
+00:10:17.249 --> 00:10:20.360
+This whole part come from the example
+
+193
+00:10:20.360 --> 00:10:21.673
+that JFrog gives you.
+
+194
+00:10:23.580 --> 00:10:24.573
+This one is the important one,
+
+195
+00:10:24.573 --> 00:10:29.253
+it's going to say Gradle.run under directory Artifactory.
+
+196
+00:10:30.210 --> 00:10:32.140
+With the build file, build.gradle.
+
+197
+00:10:32.140 --> 00:10:35.180
+Do a clean and then Artifactory Publish
+
+198
+00:10:35.180 --> 00:10:36.863
+and also provide the build info.
+
+199
+00:10:38.240 --> 00:10:39.740
+This Artifactory Publish, you need to do
+
+200
+00:10:39.740 --> 00:10:41.760
+the file in your build Gradle,
+
+201
+00:10:41.760 --> 00:10:45.640
+that's why I copied the complete directory.
+
+202
+00:10:45.640 --> 00:10:47.380
+This complete directory, I copied it
+
+203
+00:10:47.380 --> 00:10:50.050
+to Artifactory and I also provided
+
+204
+00:10:50.050 --> 00:10:52.390
+some extra information here.
+
+205
+00:10:52.390 --> 00:10:57.360
+So this extra information is also provided by JFrog,
+
+206
+00:10:57.360 --> 00:10:59.530
+by their documentation.
+
+207
+00:10:59.530 --> 00:11:01.563
+I added the Maven publish plugin.
+
+208
+00:11:02.440 --> 00:11:06.030
+Then I define what I want to publish,
+
+209
+00:11:06.030 --> 00:11:09.040
+I want to publish a Maven publication.
+
+210
+00:11:09.040 --> 00:11:13.963
+This is my group ID, my project name, and version 1.0.
+
+211
+00:11:15.110 --> 00:11:16.660
+Then we have the build scripts.
+
+212
+00:11:18.940 --> 00:11:21.343
+It's going to use jcenter repositories
+
+213
+00:11:22.547 --> 00:11:24.990
+and then here is what we want to publish.
+
+214
+00:11:24.990 --> 00:11:27.670
+So we want to publish to Gradle dev local,
+
+215
+00:11:27.670 --> 00:11:31.550
+wanna use Maven, we're going to publish this jar.
+
+216
+00:11:31.550 --> 00:11:33.553
+So let's try to execute this.
+
+217
+00:11:35.120 --> 00:11:36.003
+Build now.
+
+218
+00:11:42.470 --> 00:11:46.140
+So it says deploying build info to here
+
+219
+00:11:46.140 --> 00:11:49.240
+and deploying artifact to here.
+
+220
+00:11:49.240 --> 00:11:51.720
+And we also can see that now we have
+
+221
+00:11:51.720 --> 00:11:54.280
+this JFrog icon next to it.
+
+222
+00:11:54.280 --> 00:11:57.440
+So if you click on it we will see the build info.
+
+223
+00:11:57.440 --> 00:11:58.353
+Number one.
+
+224
+00:11:59.502 --> 00:12:01.683
+We can also go back to the console.
+
+225
+00:12:02.890 --> 00:12:05.680
+Let's have a look in our repository,
+
+226
+00:12:05.680 --> 00:12:09.630
+so the artifacts, so in Gradle dev local,
+
+227
+00:12:09.630 --> 00:12:13.270
+now we have academynewtech, gs Gradle 1.0.
+
+228
+00:12:13.270 --> 00:12:15.683
+And here then we have the jar.
+
+229
+00:12:17.270 --> 00:12:19.210
+If you're not really familiar with Gradle
+
+230
+00:12:19.210 --> 00:12:21.860
+then it sounds all a little bit complicated.
+
+231
+00:12:21.860 --> 00:12:25.060
+I'm also not developing a lot of Java applications
+
+232
+00:12:25.060 --> 00:12:26.910
+so I'm not that familiar with Gradle.
+
+233
+00:12:28.630 --> 00:12:30.510
+If you are familiar with Gradle,
+
+234
+00:12:30.510 --> 00:12:32.000
+it should make a little bit more sense,
+
+235
+00:12:32.000 --> 00:12:34.203
+but it's not an easy package to work with.
+
+236
+00:12:35.220 --> 00:12:37.170
+And because it's not an easy package to work with,
+
+237
+00:12:37.170 --> 00:12:39.230
+I also have an alternative.
+
+238
+00:12:39.230 --> 00:12:41.100
+And that's what I was talking about
+
+239
+00:12:41.100 --> 00:12:43.700
+if you're using Docker then there is an alternative.
+
+240
+00:12:44.850 --> 00:12:46.990
+So if you go back to GS Gradle,
+
+241
+00:12:46.990 --> 00:12:49.573
+there's a Jenkins file with JFrog.
+
+242
+00:12:50.440 --> 00:12:54.810
+I'm going to create a new project using this Jenkins file.
+
+243
+00:12:54.810 --> 00:12:59.440
+So Gradle publisher test with Docker.
+
+244
+00:12:59.440 --> 00:13:02.100
+And this builds on the previous project
+
+245
+00:13:02.100 --> 00:13:03.543
+that we were using.
+
+246
+00:13:05.132 --> 00:13:06.700
+(mouse clicking)
+
+247
+00:13:06.700 --> 00:13:09.763
+And it's gonna be this one.
+
+248
+00:13:11.300 --> 00:13:12.333
+And this one.
+
+249
+00:13:15.370 --> 00:13:18.353
+Yup, save, build.
+
+250
+00:13:19.860 --> 00:13:24.550
+And this one is defining a server, same server,
+
+251
+00:13:24.550 --> 00:13:28.090
+but it's still using Docker to build
+
+252
+00:13:28.090 --> 00:13:32.220
+my Gradle-based Java application.
+
+253
+00:13:32.220 --> 00:13:35.023
+And then the last step is a very simple step,
+
+254
+00:13:35.023 --> 00:13:36.800
+you're just going to say OK.
+
+255
+00:13:36.800 --> 00:13:41.400
+I'm going to upload a file to JFrog
+
+256
+00:13:41.400 --> 00:13:44.630
+and the pattern is that it's going
+
+257
+00:13:44.630 --> 00:13:46.140
+to upload everything starting
+
+258
+00:13:46.140 --> 00:13:48.020
+with GS Gradle and ends with jar.
+
+259
+00:13:48.020 --> 00:13:51.330
+And I'm going to upload it to right here.
+
+260
+00:13:51.330 --> 00:13:52.203
+To the target.
+
+261
+00:13:53.320 --> 00:13:56.070
+So you don't really have to embed
+
+262
+00:13:56.070 --> 00:13:58.380
+everything in Gradle itself.
+
+263
+00:13:58.380 --> 00:14:03.030
+You could also use this server .upload
+
+264
+00:14:03.030 --> 00:14:04.870
+to just upload some artifacts.
+
+265
+00:14:04.870 --> 00:14:08.380
+So if you're not using Gradle at all, you can also use this.
+
+266
+00:14:08.380 --> 00:14:10.770
+It just says okay I have some artifacts.
+
+267
+00:14:10.770 --> 00:14:12.850
+And my artifacts are in some directory,
+
+268
+00:14:12.850 --> 00:14:15.320
+this is the jar and I'm uploading it
+
+269
+00:14:15.320 --> 00:14:17.680
+at the correct place.
+
+270
+00:14:17.680 --> 00:14:19.470
+So this is just an alternative.
+
+271
+00:14:19.470 --> 00:14:23.033
+Here you can see now it has been completed.
+
+272
+00:14:24.700 --> 00:14:27.920
+And the artifact was uploaded.
+
+273
+00:14:27.920 --> 00:14:31.083
+So if you go back here, refresh.
+
+274
+00:14:32.650 --> 00:14:35.367
+You also have the GS Gradle Docker,
+
+275
+00:14:35.367 --> 00:14:38.140
+the GS Gradle Docker.jar.
+
+276
+00:14:38.140 --> 00:14:42.183
+So this one is also uploaded, just in another way.
+
+277
+00:14:44.580 --> 00:14:49.580
+So these are two different ways of using JFrog Artifactory
+
+278
+00:14:49.630 --> 00:14:54.630
+to upload build info and to upload artifacts.
+
+279
+00:14:55.570 --> 00:14:58.030
+JFrog is a very interesting tool to use.
+
+280
+00:14:58.030 --> 00:15:00.400
+It's a little bit out of the scope of the course,
+
+281
+00:15:00.400 --> 00:15:03.700
+you could make a whole course about JFrog.
+
+282
+00:15:03.700 --> 00:15:07.600
+About all the integrations that JFrog has,
+
+283
+00:15:07.600 --> 00:15:12.570
+like the Docker, and Maven, and all the other ones.
+
+284
+00:15:12.570 --> 00:15:15.570
+I just show you how to do this with Gradle,
+
+285
+00:15:15.570 --> 00:15:19.400
+with jars and also in the more generic way
+
+286
+00:15:19.400 --> 00:15:21.883
+with just publishing an artifact.
+
